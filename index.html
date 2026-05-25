@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Radio Comunidade</title>
+<meta name="robots" content="noindex, nofollow">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{background:#0a0a0f;color:#e0e0e0;font-family:-apple-system,BlinkMacSystemFont,sans-serif;min-height:100vh;display:flex;align-items:center;justify-content:center}
+.card{background:#12121a;border-radius:16px;padding:40px 32px;border:1px solid rgba(255,255,255,0.06);width:100%;max-width:400px;text-align:center}
+.disc{width:100px;height:100px;border-radius:50%;background:conic-gradient(from 0deg,#1a1a2e,#16213e,#0f3460,#1a1a2e,#e91e63,#1a1a2e);margin:0 auto 20px;display:flex;align-items:center;justify-content:center;font-size:36px;animation:spin 3s linear infinite paused}
+.disc.playing{animation-play-state:running}
+@keyframes spin{from{transform:rotate(0deg)}to{transform:rotate(360deg)}}
+h1{font-size:1.2rem;margin-bottom:4px}
+.sub{color:#555;font-size:0.75rem;margin-bottom:24px}
+.btn{background:linear-gradient(135deg,#e91e63,#9c27b0);color:#fff;border:none;border-radius:50%;width:52px;height:52px;font-size:20px;cursor:pointer;display:inline-flex;align-items:center;justify-content:center;box-shadow:0 4px 16px rgba(233,30,99,0.4);transition:transform .15s}
+.btn:hover{transform:scale(1.06)}
+</style>
+</head>
+<body>
+<div class="card">
+  <div class="disc" id="d">&#x1F3B5;</div>
+  <h1>Comunidade IPTV</h1>
+  <p class="sub">Clica no play para ouvir</p>
+  <button class="btn" id="p" onclick="t()">&#x25B6;</button>
+</div>
+<audio id="a" preload="none">
+  <source src="https://raw.githubusercontent.com/activistpt/pirate-tv-clone/main/assets/comunidade-iptv.mp3" type="audio/mpeg">
+</audio>
+<script>
+var au=document.getElementById("a"),pl=false;
+function t(){if(!pl){au.play();pl=true;document.getElementById("p").innerHTML="&#x23F8;";document.getElementById("d").classList.add("playing")}else{au.pause();pl=false;document.getElementById("p").innerHTML="&#x25B6;";document.getElementById("d").classList.remove("playing")}}
+au.addEventListener("ended",function(){pl=false;document.getElementById("p").innerHTML="&#x25B6;";document.getElementById("d").classList.remove("playing")});
+</script>
+</body>
+</html>
